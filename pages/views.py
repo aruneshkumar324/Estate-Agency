@@ -1,13 +1,16 @@
 from django.shortcuts import render
 from .models import Agent
+from blogs.models import Blog
 
 
 # Create your views here.
 def home(request):
     agents = Agent.objects.all()[:3]
+    blogs = Blog.objects.all()[:4]
     print(agents)
     data = {
         "agents": agents,
+        "blogs": blogs,
     }
     return render(request, 'pages/home.html', data)
 
