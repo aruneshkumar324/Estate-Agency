@@ -3,7 +3,8 @@ from .models import Property
 
 
 def property(request):
-    properties = Property.objects.all()
+    # properties = Property.objects.all()
+    properties = Property.objects.order_by('-updated_date')
     data = {
         "properties": properties
     }

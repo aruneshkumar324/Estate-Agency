@@ -3,7 +3,8 @@ from .models import Blog
 
 # Create your views here.
 def blogs(request):
-    blogs = Blog.objects.all()
+    # blogs = Blog.objects.all()
+    blogs = Blog.objects.order_by('-created_date')
     data = {
         "blogs": blogs
     }
