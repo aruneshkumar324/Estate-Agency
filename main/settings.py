@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'property.apps.PropertyConfig',
     'blogs.apps.BlogsConfig',
     'pages.apps.PagesConfig',
     'django.contrib.admin',
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'ckeditor',
 ]
 
