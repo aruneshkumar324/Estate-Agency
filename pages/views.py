@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import Agent
 from blogs.models import Blog
 from property.models import Property
+from django.core.paginator import Paginator
+
 
 
 # Create your views here.
@@ -32,7 +34,12 @@ def contact(request):
 
 def agents(request):
     agents = Agent.objects.all()
-    return render(request, 'pages/agents.html', {"agents": agents})
+
+    paginator = Paginator(agents, 3)
+    page_number = request.GET.get('page')
+    page_object = paginator.get_page(page_number)
+
+    return render(request, 'pages/agents.html', {"agents": page_object})
 
 
 def agent_profile(request, id):
