@@ -71,26 +71,8 @@
           </li>
 
           {% comment %} ACCOUNT  {% endcomment %}
-          <li class="nav-item">
-            <a 
-                {% if 'login' in request.path %}
-                    class="nav-link active"
-                {% else %}
-                    class="nav-link"
-                {% endif %}
-            href="{% url 'login' %}">Login</a>
-          </li>
-
-          <li class="nav-item">
-            <a 
-                {% if 'register' in request.path %}
-                    class="nav-link active"
-                {% else %}
-                    class="nav-link"
-                {% endif %}
-            href="{% url 'register' %}">Register</a>
-          </li>
-
+          
+          {% if user.is_authenticated %}
           <li class="nav-item">
             <a 
                 {% if 'dashboard' in request.path %}
@@ -100,6 +82,38 @@
                 {% endif %}
             href="{% url 'dashboard' %}">Dashboard</a>
           </li>
+
+          <li class="nav-item">
+            <a 
+                {% if 'logout' in request.path %}
+                    class="nav-link active"
+                {% else %}
+                    class="nav-link"
+                {% endif %}
+            href="{% url 'logout' %}">Logout</a>
+          </li>
+            {% else %}
+                <li class="nav-item">
+                <a 
+                    {% if 'login' in request.path %}
+                        class="nav-link active"
+                    {% else %}
+                        class="nav-link"
+                    {% endif %}
+                href="{% url 'login' %}">Login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a 
+                        {% if 'register' in request.path %}
+                            class="nav-link active"
+                        {% else %}
+                            class="nav-link"
+                        {% endif %}
+                    href="{% url 'register' %}">Register</a>
+                </li>
+        
+            {% endif %}
 
         </ul>
       </div>
