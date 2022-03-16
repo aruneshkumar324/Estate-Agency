@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Create New Account</h1>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Create New Account
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <div class="container">
+
+        <form action="" method="POST">
+            <center>
+                <div class="row" style="width:40%;">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="First Name" name='firstname' required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Last Name" name='lastname' required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Username" name='username' required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Email Address" name='email' required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" placeholder="Password" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" placeholder="Confirm Password" name='confirm_password' required>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </div>
+            </center>
+        </form>
+    </div>
+
+    
+  </main><!-- End #main -->
+
+
+{% endblock %}
