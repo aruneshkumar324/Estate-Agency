@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
-              <h1 class="title-single">Create New Account</h1>
+              <h1 class="title-single">Welcome {{ user.first_name }}</h1>
             </div>
           </div>
           <div class="col-md-12 col-lg-4">
@@ -22,7 +22,7 @@
                   <a href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  Create New Account
+                  Dashboard
                 </li>
               </ol>
             </nav>
@@ -33,7 +33,39 @@
 
     <div class="container">
 
-        <h1>Dashboard</h1>
+        <h1>Your Inquiry Properties</h1>
+
+        {% if user_inquiry %}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Property Title</th>
+                    <th scope="col">Interested</th>
+                    <th scope="col">Inquiry Date</th>
+                    <th scope="col">Goto</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inquiry in user_inquiry %}
+                <tr>
+                    <th scope="row">{{ inquiry.id }}</th>
+                    <td>{{ inquiry.car_title }}</td>
+                    <td>{{ inquiry.interested }}</td>
+                    <td>{{ inquiry.created_date }}</td>
+                    <td><a href="{% url 'property_details' inquiry.car_id %}">Click Me</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+
+        <h2>You don't have any inquiry</h2>
+
+        {% endif %}
         
     </div>
 

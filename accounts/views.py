@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from contacts.models import Inquiry
 
 
 def register(request):
@@ -61,4 +62,7 @@ def user_logout(request):
 
 @login_required(login_url='login')
 def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
+    user_inquiry = Inquiry.objects.order_by('-created_date').filter(user_id=request.user.id)
+    
+    return render(request, 'accounts/dashboard.html', {"user_inquiry": user_inquiry})
+

@@ -12,6 +12,8 @@
 
   <main id="main">
 
+
+
     <!-- ======= Intro Single ======= -->
     <section class="intro-single">
       <div class="container">
@@ -243,28 +245,66 @@
               </div>
               <div class="col-md-12 col-lg-4">
                 <div class="property-contact">
-                  <form class="form-a">
-                    <div class="row">
-                      <div class="col-md-12 mb-1">
-                        <div class="form-group">
-                          <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="Name *" required>
+
+                    <form action="{% url 'inquiry' %}" method="POST" class="form-a">
+
+                        {% csrf_token %}
+
+                        <div class="row">
+                        
+                        {% if user.is_authenticated %}
+                            <input type="hidden" value="{{ user.id }}" name="user_id" />
+                        {% else %}
+                            <input type="hidden" value="0" />                            
+                        {% endif %}
+
+                        <input type="hidden" value="{{ detail.id }}" name="car_id" />
+
+                        
+                        <div class="col-md-12 mb-1">
+                            <div class="form-group">
+                            <input type="text" class="form-control form-control-lg form-control-a" name="name" placeholder="Name" 
+                            {% if user.is_authenticated %} value="{{ user.first_name }} {{ user.last_name }}" {% endif %}
+                            required>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-md-12 mb-1">
-                        <div class="form-group">
-                          <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Email *" required>
+
+                        <div class="col-md-12 mb-1">
+                            <div class="form-group">
+                            <input type="email" class="form-control form-control-lg form-control-a" name="email" placeholder="Email"
+                             {% if user.is_authenticated %} value="{{ user.email }}" {% endif %}
+                            required>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-md-12 mb-1">
-                        <div class="form-group">
-                          <textarea id="textMessage" class="form-control" placeholder="Comment *" name="message" cols="45" rows="8" required></textarea>
+                        <div class="col-md-12 mb-1">
+                            <div class="form-group">
+                            <input type="number" class="form-control form-control-lg form-control-a" name="phone" placeholder="Phone" required>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-md-12 mt-3">
-                        <button type="submit" class="btn btn-a">Send Message</button>
-                      </div>
-                    </div>
-                  </form>
+                        <div class="col-md-12 mb-1">
+                            <select class="form-select" aria-label="Default select example" name="interested">
+                                <option selected>Select your interested field</option>
+                                <option value="I want visit this property.">I want visit this property.</option>
+                                <option value="I am interested to buy this property.">I am interested to buy this property.</option>
+                                <option value="I want discuss about this property.">I want discuss about this property.</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mb-1">
+                            <div class="form-group">
+                            <input type="text" class="form-control form-control-lg form-control-a" name="car_title" value="{{ detail.title }}" placeholder="Property Title" required>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-1">
+                            <div class="form-group">
+                            <textarea id="textMessage" class="form-control" placeholder="Your message..." name="message" cols="45" rows="8" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <button type="submit" class="btn btn-a">Send Message</button>
+                        </div>
+                        </div>
+                    </form>
+
                 </div>
               </div>
             </div>

@@ -90,7 +90,7 @@
                 {% else %}
                     class="nav-link"
                 {% endif %}
-            href="{% url 'logout' %}">Logout</a>
+            href="{% url 'logout' %}" style="border:1px solid grey;border-radius:10px;padding:5px;">Logout</a>
           </li>
             {% else %}
                 <li class="nav-item">
@@ -100,7 +100,7 @@
                     {% else %}
                         class="nav-link"
                     {% endif %}
-                href="{% url 'login' %}">Login</a>
+                href="{% url 'login' %}" style="border:1px solid grey;border-radius:10px;padding:5px;">Login</a>
                 </li>
 
                 <li class="nav-item">
@@ -110,7 +110,7 @@
                         {% else %}
                             class="nav-link"
                         {% endif %}
-                    href="{% url 'register' %}">Register</a>
+                    href="{% url 'register' %}" style="border:1px solid grey;border-radius:10px;padding:5px;">Register</a>
                 </li>
         
             {% endif %}
