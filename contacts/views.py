@@ -14,7 +14,6 @@ def inquiry(request):
         car_title = request.POST['car_title']
         message = request.POST['message']
 
-        print(user_id, car_id, name)
 
         if request.user.is_authenticated:
             user_id = request.user.id

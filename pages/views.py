@@ -91,5 +91,7 @@ def agents(request):
 
 def agent_profile(request, id):
     agent = Agent.objects.filter(pk=id).get()
-    data = {"agent": agent}
+    properties = Property.objects.order_by('-created_date')
+
+    data = {"agent": agent, "properties": properties}
     return render(request, 'pages/agent_profile.html', data)
